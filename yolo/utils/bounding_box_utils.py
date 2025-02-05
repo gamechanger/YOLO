@@ -354,7 +354,7 @@ class Vec2Box:
         W, H = image_size
         # TODO: need accelerate dummy test
         dummy_input = torch.zeros(1, 3, H, W)
-        dummy_output = model(dummy_input)
+        dummy_output = model(dummy_input).to(self.device)
         strides = []
         for predict_head in dummy_output["Main"]:
             _, _, *anchor_num = predict_head[2].shape
